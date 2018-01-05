@@ -23,7 +23,6 @@ module ALU #(parameter N = 32) (out, zero, inA, inB, op);
 			(op == 4'b0111) ? ((inA < inB)?1:0) : 
 			(op == 4'b1100) ? ~(inA | inB) :
 			(op == 4'b1111) ? inB << inA :
-                        (op == 4'b0011) ? inA ^ inB:
 			'bx;
 
   assign zero = (out == 0);
@@ -75,19 +74,16 @@ module RegFile (clock, reset, raA, raB, wa, wen, wd, rdA, rdB);
   integer   i;
   reg [31:0] data[31:0];
   
- // wire [31:0] rdA;
- // wire [31:0] rdB;
+  wire [31:0] rdA = data[raA];
+  wire [31:0] rdB = data[raB];
   
   always @(negedge reset)
     for (i = 0; i < 32; i = i+1)
       data[i] = i;  
   
- assign rdA = data[raA];  
- assign rdB = data[raB];  
-
   // Make sure  that register file is only written at the negative edge of the clock 
   always @(negedge clock)
-   begin 
+   begin
     if (reset == 1'b1 && wen == 1'b1 && wa != 5'b0)
         data[wa] =  wd;
    end
