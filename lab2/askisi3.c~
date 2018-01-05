@@ -1,0 +1,116 @@
+#include <stdio.h>
+typedef char bool;
+
+typedef struct beggining{
+  char hi;
+  int ho;
+  char he;
+} begin;
+
+typedef union _innerUnion {
+char c1;
+double *dptr;
+char c2;
+ innerUnion;
+
+typedef struct _innerStruct {
+char c1;
+double *dptr;
+char c2;
+} innerStruct;
+
+typedef struct _outter{
+  char a;
+  struct _innerStruct table[4];
+  int c;
+} outter;
+
+typedef struct _foo {
+char a;
+struct _innerStruct table[4];
+int c;
+bool b; // Implement in an efficient way
+double d;
+short e;
+float f;
+double g;
+char *cptr;
+void *vptr;
+int x;
+} foo;
+
+typedef struct _foo2 {
+struct _innerStruct table[4];
+double g;
+char *cptr;
+void *vptr;
+double d;
+int c;
+bool b; // Implement in an efficient way
+float f;
+int x;
+short e;
+char a;
+} foo2;
+
+typedef struct _fooU {
+char a;
+union _innerUnion table[4];
+int c;
+char b;
+// Implement in an efficient way
+double d;
+short e;
+float f;
+double g;
+char *cptr;
+void *vptr;
+int x;
+} fooU;
+
+typedef struct _fooU2 {
+char a;
+union _innerUnion table[4];
+int c;
+char b;
+// Implement in an efficient way
+double d;
+short e;
+float f;
+double g;
+char *cptr;
+void *vptr;
+int x;
+} fooU2;
+
+typedef struct HoT{
+  int a;
+  double b;
+}Ho;
+
+typedef struct structc_tag
+{
+   char        c;
+   double      d;
+   int         s;
+} structc_t;
+
+int main(int argc,char *argv[]){
+structc_t s;
+
+printf("sizeof(innerStruct) = %d\n", (int)sizeof(innerStruct));
+printf("sizeof(foo) = %d\n", (int)sizeof(foo));
+printf("sizeof(foo2) = %d\n", (int)sizeof(foo2));
+printf("sizeof(begin) = %d\n", (int)sizeof(begin));
+printf("sizeof(outter) = %d\n", (int)sizeof(outter));
+printf("sizeof(innerUnion) = %d\n", (int)sizeof(innerUnion));
+printf("sizeof(fooU) = %d\n", (int)sizeof(fooU));
+printf("sizeof(fooU2) = %d\n", (int)sizeof(fooU2));
+printf("sizeof(Ho) = %d\n", (int) sizeof(Ho));
+
+printf("\nsizeof(s) = %d\n", (int)sizeof(s));
+printf("address of s.c = %p\n", &s.c);
+printf("address of s.d = %p\n", &s.d);
+printf("address of s.s = %p\n", &s.s);
+  return 0;
+}

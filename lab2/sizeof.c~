@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <bool.h>
+
+int main(int argc,char *argv[]){
+
+
+    printf("sizeof(double) = %d\n", (int)sizeof(double));
+    printf("sizeof(float)  = %d\n", (int)sizeof(float));
+    printf("sizeof( int )  = %d\n", (int)sizeof(int));
+    printf("sizeof(short)  = %d\n", (int)sizeof(short));
+    printf("sizeof(char )  = %d\n", (int)sizeof(char));
+    printf("sizeof(bool )  = %d\n", (int)sizeof(bool));             
+    return 0;
+}

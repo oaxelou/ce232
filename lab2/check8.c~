@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+typedef struct _innerStruct {
+char c1;
+double *dptr;
+char c2;
+} innerStruct;
+
+typedef struct hi{
+  char c;
+  short *s;
+} hiT;
+
+int main(int argc,char *argv[]){
+
+  innerStruct inner;
+  hiT ho;
+
+  printf("address of char c1: %p\n", &inner.c1);
+  printf("address of double *dptr: %p\n", &inner.dptr);
+  printf("address of char c2: %p\n", &inner.c2);
+
+  printf("address of char c: %p\n", &ho.c);
+  printf("address of short s: %p\n", &ho.s);
+  return 0;
+}

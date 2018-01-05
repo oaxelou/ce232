@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int main(int argc,char *argv[]){
+
+
+    printf("sizeof(double) = %d\n", (int)sizeof(double));
+        
+    return 0;
+}

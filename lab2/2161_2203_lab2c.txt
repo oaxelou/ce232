@@ -1,0 +1,44 @@
+
+Για 32bit:
+  a) sizeof(foo)  = 1 + 3(padding) + 4*12(sizeofstruct) + 4 + 1 + 7(padding) + 8 + 2 + 2(padding) + 4 + 8 + 4 + 4 + 4 + 4(padding) = 104
+  b) sizeof(fooU) = 1 + 3(padding) + 4*4(sizeofunion)   + 4 + 1 + 7(padding) + 8 + 2 + 2(padding) + 4 + 8 + 4 + 4 + 4 + 4(padding) = 72
+  c) least sizeof(foo) = 4*12 + (4 + 1 + 1 + 2) + 8 + (4 + 4) + 8 + 4 + 4 = 88
+  typedef struct _foo {
+    struct _innerStruct table[4];
+    int c;
+    char a;
+    bool b;
+    short e;
+    double d;
+    int x;
+    float f;
+    double g;
+    char *cptr;
+    void *vptr;
+  } foo;
+
+
+ Για 64bit:
+  a) sizeof(foo) = 1 + 7(padding) + 4*24 + 4 + 1 + 3(padding) + 8 + 2 + 2(padding) + 4 + 8 + 8 + 8 + 4 + 4(padding) = 160
+  b) sizeof(fooU) = 1 + 7(padding) + 4*8 + 4 + 1 + 3(padding) + 8 + 2 + 2(padding) + 4 + 8 + 8 + 8 + 4 + 4(padding) = 96
+  c) least sizeof(foo) = 4*24 + 8 + 8 + 8 + 8 + (4 + 4) + (4 + 2 + 1 + 1) = 144
+
+  typedef struct _foo {
+    struct _innerStruct table[4];
+    double d;
+    double g;
+    char *cptr;
+    void *vptr;
+    int c;
+    float f;
+    int x;
+    short e;
+    char a;
+    bool b;
+  } foo;
+
+Ο τελευταίος περιορισμός (η ίδια η struct πρέπει να είναι ευθυγραμμισμένη)
+σημαίνει ότι υπάρχει κενός χώρος και από κάτω από το τελευταίο πεδίο, όχι
+μόνο ενδιάμεσα από τα πεδία (tail padding).
+Αυτό γίνεται επειδή πρέπει και το πρώτο πεδίο του struct να είναι ευθυγραμμισμένο
+σε περίπτωση που δηλώσουμε πίνακα από structs.
